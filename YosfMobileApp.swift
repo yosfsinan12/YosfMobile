@@ -2,7 +2,7 @@ import SwiftUI
 import WebKit
 
 @main
-struct AshteMobileApp: App {
+struct YosfMobileApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -29,7 +29,7 @@ struct LocalWebView: UIViewRepresentable {
         webView.scrollView.showsHorizontalScrollIndicator = false
         
         // فێڵکردن بۆ ئەوەی سێرڤەری لایڤەکان نەوەستن
-        webView.customUserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 AshteMobileApp"
+        webView.customUserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 YosfMobileApp"
         
         return webView
     }
