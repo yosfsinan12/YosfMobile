@@ -1,0 +1,47 @@
+name: Build AshteMobile IPA
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install XcodeGen
+        run: brew install xcodegen
+        
+      - name: Find and Fix Project File
+        run: |
+          # ئەم کۆدە خۆی فایلەکە دەدۆزێتەوە و ناوەکەی ڕاست دەکاتەوە لە هەر کوێیەک بێت
+          mv Project.yml project.yml 2>/dev/null || true
+          mv project.yaml project.yml 2>/dev/null || true
+          find . -iname "*project.y*ml*" -exec mv {} ./project.yml \; 2>/dev/null || true
+          xcodegen generate
+        
+      - name: Build App
+        run: |
+          xcodebuild clean build \
+            -project AshteMobile.xcodeproj \
+            -scheme AshteMobile \
+            -configuration Release \
+            -sdk iphoneos \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            CONFIGURATION_BUILD_DIR=build
+            
+      - name: Package IPA
+        run: |
+          mkdir -p Payload
+          mv build/AshteMobile.app Payload/
+          zip -r AshteMobile.ipa Payload
+          
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: AshteMobile-IPA
+          path: AshteMobile.ipa
