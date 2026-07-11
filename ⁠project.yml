@@ -1,13 +1,13 @@
-name: AshteMobile
+name: YosfMobile
 options:
-  bundleIdPrefix: com.ashtemobile
+  bundleIdPrefix: com.yosfmobile
 targets:
   AshteMobile:
     type: application
     platform: iOS
     deploymentTarget: "14.0"
     sources:
-      - AshteMobileApp.swift
+      - YosfMobileApp.swift
     resources:
       - index.html
       - css
@@ -18,7 +18,7 @@ targets:
     settings:
       CODE_SIGNING_REQUIRED: NO
       CODE_SIGNING_ALLOWED: NO
-      PRODUCT_BUNDLE_IDENTIFIER: com.ashtemobile.app
+      PRODUCT_BUNDLE_IDENTIFIER: com.yosfmobile.app
 schemes:
   AshteMobile:
     build:
