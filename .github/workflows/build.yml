@@ -1,4 +1,4 @@
-name: Build AshteMobile IPA
+name: Build YosfMobile IPA
 
 on:
   push:
@@ -25,8 +25,8 @@ jobs:
       - name: Build App
         run: |
           xcodebuild clean build \
-            -project AshteMobile.xcodeproj \
-            -scheme AshteMobile \
+            -project YosfMobile.xcodeproj \
+            -scheme YosfMobile \
             -configuration Release \
             -sdk iphoneos \
             CODE_SIGNING_ALLOWED=NO \
@@ -37,11 +37,11 @@ jobs:
       - name: Package IPA
         run: |
           mkdir -p Payload
-          mv build/AshteMobile.app Payload/
-          zip -r AshteMobile.ipa Payload
+          mv build/YosfMobile.app Payload/
+          zip -r YosfMobile.ipa Payload
           
       - name: Upload IPA
         uses: actions/upload-artifact@v4
         with:
-          name: AshteMobile-IPA
-          path: AshteMobile.ipa
+          name: YosfMobile-IPA
+          path: YosfMobile.ipa
