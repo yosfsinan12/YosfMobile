@@ -1,0 +1,26 @@
+name: AshteMobile
+options:
+  bundleIdPrefix: com.ashtemobile
+targets:
+  AshteMobile:
+    type: application
+    platform: iOS
+    deploymentTarget: "14.0"
+    sources:
+      - AshteMobileApp.swift
+    resources:
+      - index.html
+      - css
+      - app
+      - logo.png
+    info:
+      path: Info.plist
+    settings:
+      CODE_SIGNING_REQUIRED: NO
+      CODE_SIGNING_ALLOWED: NO
+      PRODUCT_BUNDLE_IDENTIFIER: com.ashtemobile.app
+schemes:
+  AshteMobile:
+    build:
+      targets:
+        AshteMobile: all
