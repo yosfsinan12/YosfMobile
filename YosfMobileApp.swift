@@ -2,7 +2,7 @@ import SwiftUI
 import WebKit
 
 @main
-struct AshteMobileApp: App {
+struct YosfMobileApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
