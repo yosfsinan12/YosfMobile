@@ -23,4 +23,4 @@ schemes:
   AshteMobile:
     build:
       targets:
-        AshteMobile: all
+        YosfMobile: all
